@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-warning: hsl(var(--warning));
+  --color-success: hsl(var(--success));
+  --color-water: hsl(var(--water));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+
+:root {
+  --background: 140 25% 98%;
+  --foreground: 160 25% 10%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 160 25% 10%;
+
+  --primary: 152 62% 28%;
+  --primary-foreground: 140 40% 98%;
+
+  --secondary: 145 30% 92%;
+  --secondary-foreground: 152 55% 20%;
+
+  --accent: 38 92% 50%;
+  --accent-foreground: 30 40% 12%;
+
+  --muted: 145 20% 94%;
+  --muted-foreground: 155 12% 40%;
+
+  --destructive: 0 72% 48%;
+  --destructive-foreground: 0 0% 100%;
+  --warning: 32 92% 46%;
+  --success: 152 62% 34%;
+  --water: 199 85% 45%;
+
+  --border: 148 18% 85%;
+  --input: 148 18% 82%;
+  --ring: 152 62% 36%;
+
+  --radius: 0.75rem;
+}
+
+.dark {
+  --background: 160 28% 7%;
+  --foreground: 140 20% 95%;
+
+  --card: 160 22% 11%;
+  --card-foreground: 140 20% 95%;
+
+  --primary: 152 55% 48%;
+  --primary-foreground: 160 30% 8%;
+
+  --secondary: 158 20% 17%;
+  --secondary-foreground: 140 20% 95%;
+
+  --accent: 38 90% 55%;
+  --accent-foreground: 30 40% 10%;
+
+  --muted: 158 16% 16%;
+  --muted-foreground: 145 12% 70%;
+
+  --destructive: 0 65% 55%;
+  --destructive-foreground: 0 0% 100%;
+  --warning: 32 90% 55%;
+  --success: 152 55% 50%;
+  --water: 199 80% 58%;
+
+  --border: 158 14% 24%;
+  --input: 158 14% 26%;
+  --ring: 152 55% 50%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(21, 115, 71, 0.16);
+  }
+
+  .dark .glass-card {
+    background: rgba(10, 24, 18, 0.6);
+    border: 1px solid rgba(74, 222, 128, 0.14);
+  }
+
+  .form-input {
+    @apply w-full rounded-md border border-input bg-muted/40 px-3 py-2 text-sm
+      transition-colors placeholder:text-muted-foreground
+      hover:border-primary/50 hover:bg-muted/70
+      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring
+      focus-visible:border-primary
+      disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .field-label {
+    @apply text-sm font-medium leading-none;
+  }
+}
